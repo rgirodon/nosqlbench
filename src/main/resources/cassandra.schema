@@ -1,0 +1,19 @@
+CREATE KEYSPACE bench WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
+
+USE bench;
+
+CREATE TABLE user_selection (
+  email text PRIMARY KEY,
+  formation text,
+  goalkeepers set<text>,
+  defenders set<text>,
+  midfields set<text>,
+  forwards set<text>
+);
+
+CREATE TABLE player_mention (
+  player text,
+  selectioner_email text,
+  position text,
+  PRIMARY KEY  (player, selectioner_email)
+);
